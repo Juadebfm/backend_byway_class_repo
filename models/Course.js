@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+// lectures
 const lectureSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -42,7 +43,6 @@ const sectionSchema = new mongoose.Schema({
 });
 
 //main course schema
-
 const courseSchema = new mongoose.Schema(
   {
     title: {
@@ -127,7 +127,6 @@ const courseSchema = new mongoose.Schema(
     ],
     requirements: [String],
     learningOutcomes: [String],
-    tags: [String],
     ratings: {
       average: {
         type: Number,
