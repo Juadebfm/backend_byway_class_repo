@@ -145,6 +145,9 @@ const signin = async (req, res) => {
         bio: user.bio,
         title: user.title,
         experience: user.experience,
+        enrolledCourses: user.enrolledCourses.length,
+        createdCourses: user.createdCourses.length,
+        wishlist: user.wishlist.length,
         socialLinks: user.socialLinks,
       },
     });
