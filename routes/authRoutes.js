@@ -55,4 +55,20 @@ router.post("/signin", signinValidationRules, validate, signin);
 
 // Protected routes that requires authentication
 router.get("/profile", authMiddleware, getCurrentUser);
-router.put("/profile", profileUpdateValidationRules, validate, updateProfile);
+router.put(
+  "/profile",
+  authMiddleware,
+  upload.single("profileImage"),
+  profileUpdateValidationRules,
+  validate,
+  updateProfile
+);
+router.put(
+  "/password",
+  authMiddleware,
+  passwordUpdateValidationRules,
+  validate,
+  updatePassword
+);
+
+module.exports = router;
