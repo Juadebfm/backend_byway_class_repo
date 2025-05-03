@@ -28,14 +28,13 @@ const courseImagesDir = path.join(uploadDir, "course-images");
 
 // Create directories if they don't exist
 [uploadDir, profileImagesDir, courseImagesDir].forEach((dir) => {
-  if (!fs.existSync(dir)) {
+  if (!fs.existsSync(dir)) {
     fs.mkdirSync(dir, { recursive: true });
     console.log(`Created directory: ${dir}`);
   }
 });
-
 // Serve static files from uploads
-app.use("/uploads".express.static(path.join(__dirname, "uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const rateLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
@@ -44,6 +43,7 @@ const rateLimiter = rateLimit({
 });
 
 app.use("/api/auth", rateLimiter, authRoutes);
+
 
 //Handle errors globally
 app.use(errorHandler);

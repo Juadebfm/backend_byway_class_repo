@@ -13,7 +13,7 @@ const {
 
 const {
   signupValidationRules,
-  signinValidationRules,
+  signInValidationRules,
   profileUpdateValidationRules,
   passwordUpdateValidationRules,
   validate,
@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
     cb(null, "uploads/profile-images/");
   },
   filename: function (req, file, cb) {
-    cb(null, `user-${Date.now()}${path.extreme(file.originalname)}`);
+    cb(null, `user-${Date.now()}${path.extname(file.originalname)}`);
   },
 });
 
@@ -51,7 +51,7 @@ const upload = multer({
 
 // Public routes
 router.post("/signup", signupValidationRules, validate, signup);
-router.post("/signin", signinValidationRules, validate, signin);
+router.post("/signin", signInValidationRules, validate, signin);
 
 // Protected routes that requires authentication
 router.get("/profile", authMiddleware, getCurrentUser);

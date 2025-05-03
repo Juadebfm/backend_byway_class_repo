@@ -209,6 +209,8 @@ const updateProfile = async (req, res) => {
     if (experience) updateData.experience = experience;
     if (socialLinks) updateData.socialLinks = socialLinks;
 
+    // Stop the user from changing the email, username and role automatically. ___>***
+
     //handle profile image if provided
     if (req.file) {
       updateData.profileImage = `uploads/${req.file.filename}`;
